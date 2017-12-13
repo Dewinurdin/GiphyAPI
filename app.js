@@ -2,9 +2,13 @@ $(document).ready(function() {
 	console.log("ready");
 	// this is array of topic to renderButtons
 
- var holiday = ["santa", "rudolph", "elves", "northpole"];
+ var topic = ["Santa Claus", "Mrs. Claus", "Rudolph The Red Nose Raindeer", "Little Drummer Boy", "The Grinch", "Santa's Elves", "Santa's Northpole", "Frosty the Snowman", "Christmas Trees", "The birth of Jesus", "Christmas Angels", "Scrooge"];
+ var api = "https://api.giphy.com/v1/gifs/search?api_key=iW1s83WhVS4y6wqeHCOFOKdAwNKH6TUt&q=";
+ var apiKey = "&limit=25&offset=0&rating=G&lang=en";
 
 // write a function to display gif from API
+// Create on Click function on buttons to append gif images to html when button is clicked
+//BUTTON TRIGGERED ajax
 function showGif () {
 	$(document).on("click", ".christmas", function() {
 		$("#gif-images").empty();
@@ -22,39 +26,42 @@ function showGif () {
 				for (var i=0; i<results.length; i++) {
 				//show images
 				var showImage = $("<img>");
-				showImage.attr("src", results[i].data.images.original.url);
-								
-			
+				showImage.attr("src", results[i].images.fixed_height.url);
+				$("#gif-images").append(showImage);
 			}		
 		})
 	})
 }; 
 
+showGif();
+
 //write a function to dynamically create a button
  function renderButton() {
- 	for (var i=0; i<holiday.length; i++) {
+ 	for (var i=0; i<topic.length; i++) {
  		var buttons = $("<button>");
  		 	buttons.addClass("christmas");
  		 	buttons.addClass("btn");
- 		 	buttons.attr("data-giphy", holiday[i]);
- 		 	buttons.text(holiday[i]);
+ 		 	buttons.attr("data-giphy", topic[i]);
+ 		 	buttons.text(topic[i]);
  		 	$("#buttons-holder").append(buttons);
  	}
  }
 	renderButton();
 
-	showGif();
-
-// Create Renderbuttons
-
-// Create on Click function on buttons to append gif images to html when button is clicked
-//BUTTON TRIGGERED ajax
-
-	$(document).on("click", "#button1", function(){
-		$("#gif-images").append(giphyUrl);
-	}) 
-
 // setting a pause state and animate
+$(".gif").on("click", function() {
+	var pauseState = results.images.fixed_height_still;
+				pauseState.attr({
+					"data-still": still;
+				
+		var animateState = results.images.fixed_height.url;
+			animateState.attr({
+				"data-animate": animate;
+})
+
+
+
+
 		
 	})
 
