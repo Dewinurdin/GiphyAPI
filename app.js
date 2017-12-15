@@ -59,10 +59,7 @@ function showGif() {
 			dataStill.attr("src", results[i].images.fixed_height_still.url);
 			dataStill.attr("data-state: 'still'");
 
-		if (state === "animate") {
-
-		}
-
+		
 			}		
 		})
 	})
