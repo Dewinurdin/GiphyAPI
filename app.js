@@ -44,20 +44,17 @@ $("#add-topic").on("click", function(event) {
 // Create on Click function on buttons to append gif images when button is clicked
 
 function showGif() {	
-	$(".christmas").on("click", function() {
+	$("#buttons-holder").on("click", "button", function() {
 		$("#gif-images").empty();
 		var state = $(this).attr("data-still");
 		
-		//console.log("click button")
 		var giphyUrl = api + state + apiKey;
-		console.log(giphyUrl);
 
 		$.ajax({
 		url: giphyUrl,
 		Method: "GET"
-		}) .done(function(response) {
-			console.log(response);
-		
+		}) .done(function(response) {	
+		console.log(response.data)	
 		var results = response.data;
 			for (var i=0; i<results.length; i++) {
 		//show images
@@ -71,22 +68,22 @@ function showGif() {
 			});
 
 		$("#gif-images").append(showImage);
-
-		// setting a pause state and animate
-		$(".gif").on("click", function(){
-			
-
-			if (state === "still") {
-	        $(this).attr(showImage.src, $(this).attr("data-animate"));
-	        $(this).attr("data-state", "animate");
-	      	} else {
-	        $(this).attr("src", $(this).attr("data-still"));
-	        $(this).attr("data-state", "still");
-	      }
-		})
    	}		
-})
-});
+   		// setting a pause state and animate
+		$("#gif-images").on("click", "img", function(){
+			   	var gifState = $(this).attr("data-state")
+				
+				if (gifState === "still") {
+		        $(this).attr("src", $(this).attr("data-animate"));
+		        $(this).attr("data-state", "animate");
+		      	} else {
+
+		        $(this).attr("src", $(this).attr("data-still"));
+		        $(this).attr("data-state", "still");
+		      }
+			})
+		})
+	});
 }
 showGif();
 });
