@@ -33,15 +33,12 @@ $("#add-topic").on("click", function(event) {
 			button.text(userInput);
 
 			$("#buttons-holder").append(button);
+			$("#topic-form").val("");
 
 });
 
-//clear out form after user inputted value and appended dynamic button
-// NOT WORKING!!
-//$("#topic-form").empty(); 
-
-// write a function to display gif from API
-// Create on Click function on buttons to append gif images when button is clicked
+// function to display gif from API
+// Created on Click function on buttons to append gif images when button is clicked
 
 function showGif() {	
 	$("#buttons-holder").on("click", "button", function() {
